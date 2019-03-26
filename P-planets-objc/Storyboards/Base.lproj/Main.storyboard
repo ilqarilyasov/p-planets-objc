@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Planets Collection View Controller-->
+        <!--Planets-->
         <scene sceneID="r5Z-eU-U4k">
             <objects>
                 <collectionViewController id="WOW-Hh-Etr" customClass="IIIPlanetsCollectionViewController" sceneMemberID="viewController">
@@ -66,26 +66,33 @@
                             <outlet property="delegate" destination="WOW-Hh-Etr" id="LQY-jt-4di"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="lfq-Dx-PzB">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Rvv-ew-WUC"/>
+                    <navigationItem key="navigationItem" title="Planets" id="lfq-Dx-PzB">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Rvv-ew-WUC">
+                            <connections>
+                                <action selector="openSettings:" destination="WOW-Hh-Etr" id="SLJ-zz-H6A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="settingsView" destination="5NL-29-hlB" id="M1O-hC-Wg5"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0lq-2k-c4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="5NL-29-hlB">
-                    <rect key="frame" x="0.0" y="0.0" width="246" height="160"/>
+                <view contentMode="scaleToFill" id="5NL-29-hlB" customClass="IIISettingsView">
+                    <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f2D-1N-K70">
-                            <rect key="frame" x="20" y="64.5" width="206" height="31"/>
+                            <rect key="frame" x="20" y="59.5" width="240" height="31"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Pluto a planet?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Td-PZ-0ET">
-                                    <rect key="frame" x="0.0" y="0.0" width="137" height="31"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="171" height="31"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJ9-0m-2Yp">
-                                    <rect key="frame" x="157" y="0.0" width="51" height="31"/>
+                                    <rect key="frame" x="191" y="0.0" width="51" height="31"/>
                                     <connections>
                                         <action selector="isPlutoAPlanet:" destination="lrO-de-p8h" eventType="valueChanged" id="Fhn-T1-92z"/>
                                     </connections>
@@ -93,8 +100,8 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmI-O6-bA4">
-                            <rect key="frame" x="107" y="117" width="32" height="27"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <rect key="frame" x="118" y="131" width="44" height="33"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <state key="normal" title="Close"/>
                             <connections>
                                 <action selector="closeSettings:" destination="lrO-de-p8h" eventType="touchUpInside" id="1NO-4V-cA1"/>
@@ -108,7 +115,7 @@
                         <constraint firstItem="f2D-1N-K70" firstAttribute="centerX" secondItem="5NL-29-hlB" secondAttribute="centerX" id="X9u-WR-krw"/>
                         <constraint firstItem="4NY-4X-mc7" firstAttribute="trailing" secondItem="f2D-1N-K70" secondAttribute="trailing" constant="20" id="k9q-wl-Ydx"/>
                         <constraint firstItem="4NY-4X-mc7" firstAttribute="bottom" secondItem="VmI-O6-bA4" secondAttribute="bottom" constant="16" id="kZQ-Co-Bl0"/>
-                        <constraint firstItem="f2D-1N-K70" firstAttribute="centerY" secondItem="5NL-29-hlB" secondAttribute="centerY" id="zSR-Ja-yw4"/>
+                        <constraint firstItem="f2D-1N-K70" firstAttribute="centerY" secondItem="5NL-29-hlB" secondAttribute="centerY" constant="-15" id="zSR-Ja-yw4"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="4NY-4X-mc7"/>
                 </view>
@@ -121,8 +128,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aCZ-n4-2Hb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l0E-oa-f9D">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="l0E-oa-f9D">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
