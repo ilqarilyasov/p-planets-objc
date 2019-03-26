@@ -95,6 +95,7 @@
                                     <rect key="frame" x="191" y="0.0" width="51" height="31"/>
                                     <connections>
                                         <action selector="isPlutoAPlanet:" destination="lrO-de-p8h" eventType="valueChanged" id="Fhn-T1-92z"/>
+                                        <action selector="isPlutoPlanet:" destination="5NL-29-hlB" eventType="valueChanged" id="QMe-Cy-CfV"/>
                                     </connections>
                                 </switch>
                             </subviews>
@@ -105,6 +106,7 @@
                             <state key="normal" title="Close"/>
                             <connections>
                                 <action selector="closeSettings:" destination="lrO-de-p8h" eventType="touchUpInside" id="1NO-4V-cA1"/>
+                                <action selector="closeSettings:" destination="5NL-29-hlB" eventType="touchUpInside" id="lXI-ZV-e0d"/>
                             </connections>
                         </button>
                     </subviews>

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IIISettingsViewDelegate <NSObject>
 
 @required
-- (void)swithTapped;
+- (void)switchTapped;
 - (void)closeTapped;
 
 @end
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) id <IIISettingsViewDelegate> delegate;
 
-- (IBAction)isPlutoAPlanet:(UISwitch *)sender;
+- (IBAction)isPlutoPlanet:(UISwitch *)sender;
 - (IBAction)closeSettings:(UIButton *)sender;
 
 @end

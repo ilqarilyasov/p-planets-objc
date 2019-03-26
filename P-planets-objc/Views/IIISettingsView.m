@@ -11,8 +11,8 @@
 
 @implementation IIISettingsView
 
-- (IBAction)isPlutoAPlanet:(UISwitch *)sender {
-    [_delegate swithTapped];
+- (IBAction)isPlutoPlanet:(UISwitch *)sender {
+    [_delegate switchTapped];
 }
 
 - (IBAction)closeSettings:(UIButton *)sender {

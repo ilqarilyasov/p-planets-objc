@@ -33,14 +33,13 @@ static NSString * const reuseIdentifier = @"PlanetCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     _planetController = [[IIIPlanetController alloc] init];
+    _settingsView.delegate = self;
     _settingsIsOpened = NO;
 }
 
 - (IBAction)openSettings:(UIBarButtonItem *)sender {
     if (self.settingsIsOpened) {
-        self.settingsIsOpened = NO;
-        [[self blurEffectView] removeFromSuperview];
-        [[self settingsView] removeFromSuperview];
+        [self removeSubviews];
     } else {
         self.settingsIsOpened = YES;
         [self addBlur];
@@ -62,6 +61,13 @@ static NSString * const reuseIdentifier = @"PlanetCell";
     [self.view addSubview:_blurEffectView];
 }
 
+- (void) removeSubviews
+{
+    self.settingsIsOpened = NO;
+    [[self blurEffectView] removeFromSuperview];
+    [[self settingsView] removeFromSuperview];
+}
+
 
 #pragma mark - <UICollectionViewDataSource>
 
@@ -78,42 +84,13 @@ static NSString * const reuseIdentifier = @"PlanetCell";
     return planetCell;
 }
 
-#pragma mark - <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
+#pragma mark - IIISettingsViewDelegate
 
 - (void)closeTapped {
-    
+    [self removeSubviews];
 }
 
-- (void)swithTapped {
+- (void)switchTapped {
     
 }
 
