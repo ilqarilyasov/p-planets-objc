@@ -16,7 +16,10 @@
 
 @interface IIIPlanetsCollectionViewController ()
 
-@property IIIPlanetController *planetController;
+@property (strong, nonatomic) IIIPlanetController *planetController;
+@property (strong, nonatomic) IBOutlet IIISettingsView *settingsView;
+@property (strong, nonatomic) UIVisualEffectView *blurEffectView;
+@property (nonatomic) BOOL settingsIsOpened;
 
 @end
 
@@ -30,7 +33,35 @@ static NSString * const reuseIdentifier = @"PlanetCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     _planetController = [[IIIPlanetController alloc] init];
+    _settingsIsOpened = NO;
 }
+
+- (IBAction)openSettings:(UIBarButtonItem *)sender {
+    if (self.settingsIsOpened) {
+        self.settingsIsOpened = NO;
+        [[self blurEffectView] removeFromSuperview];
+        [[self settingsView] removeFromSuperview];
+    } else {
+        self.settingsIsOpened = YES;
+        [self addBlur];
+        [[self view] addSubview: [self settingsView]];
+        self.settingsView.center = CGPointMake(self.view.frame.size.width / 2,
+                                               self.view.frame.size.height / 2);
+        [[[self settingsView] layer] setCornerRadius: 20];
+        [[[self settingsView] layer] setMasksToBounds: YES];
+    }
+}
+
+- (void) addBlur {
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    _blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    
+    _blurEffectView.frame = self.view.bounds;
+    _blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [self.view addSubview:_blurEffectView];
+}
+
 
 #pragma mark - <UICollectionViewDataSource>
 
