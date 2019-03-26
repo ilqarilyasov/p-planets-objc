@@ -91,7 +91,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJ9-0m-2Yp">
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FJ9-0m-2Yp">
                                     <rect key="frame" x="191" y="0.0" width="51" height="31"/>
                                     <connections>
                                         <action selector="isPlutoAPlanet:" destination="lrO-de-p8h" eventType="valueChanged" id="Fhn-T1-92z"/>

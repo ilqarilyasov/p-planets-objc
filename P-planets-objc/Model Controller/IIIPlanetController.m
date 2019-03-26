@@ -9,6 +9,13 @@
 #import "IIIPlanetController.h"
 #import "../Model/IIIPlanet.h"
 
+@interface IIIPlanetController ()
+
+@property (strong, nonatomic) IIIPlanet *pluto;
+
+@end
+
+
 @implementation IIIPlanetController
 
 - (instancetype)init
@@ -24,11 +31,19 @@
                     [[IIIPlanet alloc] initWithName: @"Saturn" imageName: @"saturn"],
                     [[IIIPlanet alloc] initWithName: @"Uranus" imageName: @"uranus"],
                     [[IIIPlanet alloc] initWithName: @"Venus" imageName: @"venus"], nil];
+        _pluto = [[IIIPlanet alloc] initWithName: @"Pluto" imageName: @"pluto"];
+        _isPlutoAdded = NO;
     }
     return self;
 }
 
-
-// [[IIIPlanet alloc] initWithName: @"Pluto" imageName: @"pluto"]
+- (void)setIsPlutoAdded:(BOOL)isPlutoAdded
+{
+    if (self.isPlutoAdded == NO) {
+        [[self planets] addObject: self.pluto];
+    } else {
+        [[self planets] removeObject: self.pluto];
+    }
+}
 
 @end

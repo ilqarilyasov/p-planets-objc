@@ -30,8 +30,16 @@
 
 static NSString * const reuseIdentifier = @"PlanetCell";
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateViews) name:@"Pluto" object:nil];
+    
     _planetController = [[IIIPlanetController alloc] init];
     _settingsView.delegate = self;
     _settingsIsOpened = NO;
@@ -61,11 +69,14 @@ static NSString * const reuseIdentifier = @"PlanetCell";
     [self.view addSubview:_blurEffectView];
 }
 
-- (void) removeSubviews
-{
+- (void) removeSubviews {
     self.settingsIsOpened = NO;
     [[self blurEffectView] removeFromSuperview];
     [[self settingsView] removeFromSuperview];
+}
+
+- (void) updateViews {
+    [[self collectionView] reloadData];
 }
 
 
@@ -91,7 +102,13 @@ static NSString * const reuseIdentifier = @"PlanetCell";
 }
 
 - (void)switchTapped {
+    if (self.planetController.isPlutoAdded == YES) {
+        self.planetController.isPlutoAdded = NO;
+    } else {
+        self.planetController.isPlutoAdded = YES;
+    }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Pluto" object:nil];
 }
 
 @end

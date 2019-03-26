@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IIIPlanetController : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray<IIIPlanet *>* planets;
+@property (nonatomic, readwrite) BOOL isPlutoAdded;
 
 @end
 
